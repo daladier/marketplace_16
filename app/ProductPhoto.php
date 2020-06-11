@@ -3,9 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Product;
 
-class ProductImage extends Model
+class ProductPhoto extends Model
 {
 	protected $fillable = ['image'];
     public function product(){

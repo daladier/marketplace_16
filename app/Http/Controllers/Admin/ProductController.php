@@ -23,6 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         $userStore = auth()->user()->store;
         $products = $userStore->products()->paginate(10);
         return view('admin.products.index',compact('products'));
@@ -45,7 +46,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, $imageColumn)
+    public function store(ProductRequest $request)
     {
        $data = $request->all();
        $store = auth()->user()->store;
@@ -117,7 +118,7 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');       
     }
 
-    private function imageUpload (Request $request){
+    private function imageUpload (Request $request, $imageColumn){
       $images = $request->file('photos');
       $uploadedImages = [];
        foreach ($images as $image) {
