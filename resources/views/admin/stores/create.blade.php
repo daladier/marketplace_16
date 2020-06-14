@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1>Criar loja</h1>
-<form action="{{route('admin.stores.store')}}" method="post">
+<form action="{{route('admin.stores.store')}}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
 		<label>Nome Loja</label>
@@ -39,6 +39,12 @@
 			</div>	
 		@enderror
 	</div>
+
+    <div class="form-group">
+         <label>Logomarca</label>
+         <input type="file" name="logo" class="form-control">
+    </div>	
+
 	<div class="form-group">
 		<label>Slug</label>
 		<input type="text" name="slug" class="form-control" value="{{old('slug')}}">
